@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  /* impede que os blobs criem scroll horizontal */
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =====================================================================
+   BLOBS ANIMADOS (efeito "lava lamp")
+   Usamos transform (translate + scale) para manter em GPU.
+   Cada blob tem duração diferente para o movimento parecer orgânico.
+   ===================================================================== */
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.4;
+  will-change: transform;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .blob {
+    filter: blur(120px);
+  }
+}
+
+.blob-1 {
+  top: -8%;
+  left: -12%;
+  width: 22rem;
+  height: 22rem;
+  background: radial-gradient(circle at 30% 30%, #bef264, #7fae2f);
+  animation: blob-move-1 15s ease-in-out infinite;
+}
+
+.blob-2 {
+  top: 30%;
+  right: -18%;
+  width: 26rem;
+  height: 26rem;
+  background: radial-gradient(circle at 40% 40%, #2f6b1f, #0f3d12);
+  animation: blob-move-2 20s ease-in-out infinite;
+}
+
+.blob-3 {
+  bottom: -10%;
+  left: 5%;
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(circle at 50% 40%, #3b2f6b, #1a1440);
+  opacity: 0.3;
+  animation: blob-move-3 25s ease-in-out infinite;
+}
+
+.blob-4 {
+  top: 55%;
+  left: -6%;
+  width: 16rem;
+  height: 16rem;
+  background: radial-gradient(circle at 40% 40%, #a3e635, #4d7c0f);
+  opacity: 0.3;
+  animation: blob-move-4 18s ease-in-out infinite;
+}
+
+@keyframes blob-move-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, 40px) scale(1.15);
+  }
+}
+
+@keyframes blob-move-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-40px, 30px) scale(0.9);
+  }
+}
+
+@keyframes blob-move-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -30px) scale(1.2);
+  }
+}
+
+@keyframes blob-move-4 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-25px, -35px) scale(1.1);
+  }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none !important;
+  }
+}
