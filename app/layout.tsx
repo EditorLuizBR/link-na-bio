@@ -1,27 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { Inter_Tight } from "next/font/google";
+import { Inter } from "next/font/google";
+import { profile, site } from "@/lib/config";
 import "./globals.css";
 
-const interTight = Inter_Tight({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter-tight",
+  variable: "--font-inter",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Editor Luiz",
-  description:
-    "Editor de vídeos especializado em transformar ideias em conteúdos que vendem e geram resultados.",
+  metadataBase: new URL(site.url),
+  title: profile.name,
+  description: profile.bio,
   openGraph: {
-    title: "Editor Luiz",
-    description:
-      "Editor de vídeos especializado em transformar ideias em conteúdos que vendem e geram resultados.",
+    title: profile.name,
+    description: profile.bio,
     type: "website",
+    url: site.url,
+    images: [{ url: profile.avatar, alt: profile.name }],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
 };
@@ -32,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={interTight.variable}>
-      <body className="min-h-dvh bg-base font-sans antialiased">{children}</body>
+    <html lang="pt-BR" className={inter.variable}>
+      <body className="min-h-dvh font-sans antialiased">{children}</body>
     </html>
   );
 }

@@ -15,28 +15,25 @@ Abre em http://localhost:3000
 
 Tudo fica em **`lib/config.ts`** — não precisa mexer nos componentes:
 
-- `profile` — nome, bio, avatar e o link do botão "+"
-- `whatsapp` — link e texto do botão CTA principal
-- `products` — cards (título, subtítulo, imagem e `href`; card sem `href` vira só imagem)
-- `social` — marca do rodapé e Instagram
+- `profile` — nome, bio (o `\n` marca a quebra de linha) e avatar
+- `socials` — botões redondos abaixo da bio (Instagram, TikTok, WhatsApp)
+- `banners` — cards 16:9 (título, subtítulo, imagem e `href`; com `subtitle` o card ganha a legenda embaixo)
+- `social` — marca e link do rodapé (LCX)
 
 ## Trocar as imagens
 
-As imagens ficam em **`public/images/`**. Os arquivos atuais são **placeholders em SVG**.
-Para usar as imagens reais:
+As imagens ficam em **`public/images/`**. Coloque o arquivo lá e atualize o caminho
+correspondente em `lib/config.ts`. Imagens que não são 16:9 são cortadas pelo centro.
+A Vercel otimiza as imagens automaticamente (WebP/AVIF no tamanho certo).
 
-1. Coloque seus arquivos em `public/images/` (ex: `contato.jpg`, `notion.jpg`, `portfolio.jpg`, `avatar.jpg`).
-2. Atualize o caminho correspondente em `lib/config.ts` (uma linha por imagem).
+## Visual
 
-Qualquer formato funciona (JPG, PNG, SVG, WebP) — a otimização de imagem está desligada
-em `next.config.mjs` justamente para não travar em nenhum formato.
+Identidade do site da LCX: fundo preto, fonte Inter, manchas de luz branca desfocadas.
 
-## Componentes
-
-- `components/Background.tsx` — blobs animados (lava lamp). Animações em `app/globals.css`.
-- `components/ProfileHeader.tsx` — avatar, nome, bio e botão "+".
-- `components/CTAButton.tsx` — botão grande do WhatsApp.
-- `components/ProductCard.tsx` — cards de produto.
+- `components/Background.tsx` — fundo preto com o blur branco.
+- `components/ProfileHeader.tsx` — avatar, nome, bio e botões das redes.
+- `components/SocialButtons.tsx` — botões redondos das redes.
+- `components/ProductCard.tsx` — cards/banners.
 
 ## Deploy na Vercel
 

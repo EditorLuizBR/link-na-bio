@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 
+// Paleta do site da LCX (css/styles.css do lcx-site)
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -9,16 +10,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: "#0A0A0A",
-        lime: {
-          DEFAULT: "#BEF264",
-        },
+        base: "#000000",
+        panel: "#0b0b0d",
+        muted: "#8a8a92",
+        faint: "#5c5c63",
       },
       fontFamily: {
-        sans: ["var(--font-inter-tight)", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       maxWidth: {
-        bio: "420px",
+        bio: "436px",
       },
     },
   },

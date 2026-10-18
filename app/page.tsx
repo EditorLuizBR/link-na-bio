@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Background from "@/components/Background";
 import ProfileHeader from "@/components/ProfileHeader";
-import CTAButton from "@/components/CTAButton";
 import ProductCard from "@/components/ProductCard";
-import { products, social } from "@/lib/config";
+import { banners, social } from "@/lib/config";
 
 const container = {
   hidden: { opacity: 0 },
@@ -28,60 +28,49 @@ export default function Home() {
     <>
       <Background />
 
-      <main className="relative mx-auto flex min-h-dvh w-full max-w-bio flex-col px-5 pb-10 pt-14">
+      <main className="relative mx-auto flex min-h-dvh w-full max-w-bio flex-col px-4 pb-10 pt-12 sm:pt-14">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex flex-col gap-6"
+          className="flex flex-col items-center"
         >
-          {/* Painel de vidro fosco (glassmorphism) sobre o fundo animado */}
-          <div className="flex flex-col gap-6 rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
-            <ProfileHeader />
+          <ProfileHeader />
 
-            <CTAButton />
-
-            {/* Cards de produtos */}
-            <div className="flex flex-col gap-4">
-              {products.map((product, i) => (
-                <ProductCard
-                  key={product.title}
-                  product={product}
-                  priority={i === 0}
-                />
-              ))}
-            </div>
+          {/* Banners */}
+          <div className="mt-9 flex w-full flex-col gap-4">
+            {banners.map((banner, i) => (
+              <ProductCard
+                key={banner.image}
+                banner={banner}
+                priority={i === 0}
+              />
+            ))}
           </div>
 
           {/* Rodapé */}
           <motion.footer
             variants={item}
-            className="mt-6 flex flex-col items-center gap-2 pb-2"
+            className="mt-12 flex flex-col items-center gap-3"
           >
             <a
-              href={social.instagram}
+              href={social.brandUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="text-neutral-500 transition-colors hover:text-lime"
+              aria-label="Site da LCX"
+              className="opacity-60 outline-none transition-opacity hover:opacity-100 focus-visible:opacity-100"
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
+              <Image
+                src="/images/lcx-logo.png"
+                alt="LCX"
+                width={687}
+                height={339}
+                className="h-6 w-auto"
+              />
             </a>
-            <p className="text-xs text-neutral-600">
-              © {new Date().getFullYear()} {social.brand}
+            <p className="text-xs text-faint">
+              © {new Date().getFullYear()} {social.brand}. Todos os direitos
+              reservados.
             </p>
           </motion.footer>
         </motion.div>

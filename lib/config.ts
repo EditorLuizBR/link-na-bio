@@ -6,51 +6,63 @@
  *  As imagens ficam em /public/images (referencie com "/images/arquivo.jpg").
  */
 
+export const site = {
+  url: "https://editorluizbr.vercel.app",
+};
+
 export const profile = {
   name: "Editor Luiz",
-  bio: "Editor de vídeos especializado em transformar ideias em conteúdos que vendem e geram resultados.",
+  handle: "@editordevideosluiz",
+  // "\n" marca a quebra de linha da bio (fica em 2 linhas)
+  bio: "Editor de vídeos especialista em transformar\nconteúdos em resultados e vendas.",
   avatar: "/images/avatar.jpg",
-  // Botão "+" (redes extras). Deixe "#" enquanto não tiver o link final.
-  extraLink: "#",
 };
 
-// Número no formato internacional, só dígitos (ex: 55DDDNUMERO).
-// Como o CTA usa um wa.link encurtado, o número abaixo é apenas fallback.
-export const whatsapp = {
-  href: "https://wa.link/dp64ki",
-  label: "Entre em contato conosco",
-};
+// Botões redondos abaixo da bio (ícones em components/SocialButtons.tsx)
+export const socials = [
+  {
+    name: "instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/editordevideosluiz/",
+  },
+  {
+    name: "tiktok",
+    label: "TikTok",
+    href: "https://www.tiktok.com/@editorluizbr",
+  },
+  {
+    name: "whatsapp",
+    label: "WhatsApp",
+    href: "https://api.whatsapp.com/send?phone=5584991445598&text=Ol%C3%A1!%20Gostaria%20De%20Saber%20Mais%20Sobre%20Seus%20Servi%C3%A7os%20de%20Edi%C3%A7%C3%A3o.",
+  },
+] as const;
 
-export type Product = {
-  title: string;
-  subtitle?: string;
+// Todos os banners aparecem no formato 16:9 (imagens de outra proporção
+// são cortadas pelo centro).
+export type Banner = {
+  title: string; // texto alternativo da imagem (e título da legenda)
+  subtitle?: string; // com subtitle, o card ganha a legenda embaixo da imagem
   image: string;
-  href?: string; // sem href = card sem link (só imagem)
+  href?: string; // sem href = card sem link
 };
 
-export const products: Product[] = [
+export const banners: Banner[] = [
   {
-    title: "Entre em contato",
-    subtitle: "Fale comigo agora no WhatsApp",
-    image: "/images/contato.png",
-    href: "https://wa.link/dp64ki",
+    title: "Solicite seu orçamento",
+    subtitle: "Conte sobre o seu projeto em poucos passos",
+    image: "/images/orcamento.webp",
+    href: "https://lcx-site.vercel.app/",
   },
   {
-    title: "Notion do Freelancer",
-    subtitle: "Seu sistema operacional completo",
-    image: "/images/notion.png",
-    href: "https://pay.cakto.com.br/jjfzk36_936866",
-  },
-  {
-    title: "Portfólio",
-    subtitle: "Alguns dos meus trabalhos",
+    title: "Conheça meu portfólio",
+    subtitle: "Confira alguns de nossos trabalhos",
     image: "/images/portfolio.png",
-    // sem href por enquanto
+    href: "https://drive.google.com/drive/folders/1XvTA2vPIFBacp5x2-p12dT6Fjn6NKnTm?usp=sharing",
   },
 ];
 
 export const social = {
-  brand: "LCX Media",
-  handle: "@editordevideosluiz",
+  brand: "LCX",
+  brandUrl: "https://lcx-site.vercel.app",
   instagram: "https://www.instagram.com/editordevideosluiz/",
 };
