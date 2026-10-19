@@ -7,7 +7,7 @@
  */
 
 export const site = {
-  url: "https://editorluizbr.vercel.app",
+  url: "https://lcxstudios.com",
 };
 
 export const profile = {
@@ -51,7 +51,7 @@ export const banners: Banner[] = [
     title: "Solicite seu orçamento",
     subtitle: "Conte sobre o seu projeto em poucos passos",
     image: "/images/orcamento.webp",
-    href: "https://lcx-site.vercel.app/",
+    href: "https://forms.lcxstudios.com/",
   },
   {
     title: "Conheça meu portfólio",
@@ -63,6 +63,6 @@ export const banners: Banner[] = [
 
 export const social = {
   brand: "LCX",
-  brandUrl: "https://lcx-site.vercel.app",
+  brandUrl: "https://forms.lcxstudios.com",
   instagram: "https://www.instagram.com/editordevideosluiz/",
 };
